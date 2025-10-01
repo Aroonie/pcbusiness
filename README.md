@@ -3,7 +3,6 @@
 
   &#xa0;
 
-  <!-- <a href="https://pc-business.vercel.app/">Demo</a> -->
 </div>
 
 <h1 align="center">Website </h1>
@@ -17,20 +16,7 @@
 
   <img alt="License" src="https://img.shields.io/github/license/Aroonie/pcbusiness?color=56BEB8">
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/Aroonie/pcbusiness?color=56BEB8" /> -->
-
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/Aroonie/pcbusiness?color=56BEB8" /> -->
-
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/Aroonie/pcbusiness?color=56BEB8" /> -->
 </p>
-
-<!-- Status -->
-
-<!-- <h4 align="center"> 
-	🚧  Pc Business 🚀 Under construction...  🚧
-</h4> 
-
-<hr> -->
 
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
@@ -75,7 +61,7 @@ $ vercel dev
 
 ## :memo: License ##
 
-This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
+This project is under the GNU GPLv3 License. For more details, see the LICENSE.md file.
 
 
 Made with :heart: by <a href="https://github.com/Aroonie" target="_blank"> Arunan</a>
