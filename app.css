@@ -102,32 +102,6 @@ a:hover {
     color: white;
 }
 
-.btn-ghost {
-    background: transparent;
-    color: var(--text-dim);
-    border: 1px solid transparent;
-    transition: color .3s;
-}
-
-.btn-ghost {
-    background: rgba(255,255,255,0.04);
-    color: var(--text-dim);
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: .65rem 1.05rem;
-    border-radius: .7rem;
-    font-size: .75rem;
-    text-transform: uppercase;
-    letter-spacing: .75px;
-    font-weight: 600;
-    transition: .3s;
-    cursor: pointer;
-}
-
-.btn-ghost:hover {
-    color: var(--text);
-    border-color: var(--accent);
-}
-
 /* Navigation */
 header.navbar {
     position: sticky;
@@ -169,29 +143,6 @@ header.navbar {
     font-size: 0.9rem;
     line-height: 1.6;
     margin: 0;
-    color: var(--text-dim);
-}
-
-.feature-inline-stat {
-    display: flex;
-    flex-direction: column;
-    background: var(--panel-bg);
-    border: 1px solid var(--panel-border);
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    min-width: 120px;
-}
-
-.feature-inline-stat strong {
-    font-size: 1.25rem;
-    color: var(--accent-soft);
-}
-
-.feature-inline-stat span {
-    font-size: .65rem;
-    text-transform: uppercase;
-    letter-spacing: .8px;
-    font-weight: 600;
     color: var(--text-dim);
 }
 
@@ -335,30 +286,6 @@ footer {
     opacity: 0;
     transform: translateY(14px);
     animation: fadeUp .85s cubic-bezier(.23,1,.32,1) forwards;
-}
-
-.delay-1 {
-    animation-delay: .08s;
-}
-
-.delay-2 {
-    animation-delay: .16s;
-}
-
-.delay-3 {
-    animation-delay: .24s;
-}
-
-.delay-4 {
-    animation-delay: .32s;
-}
-
-.hover-rise:hover {
-    transform: translateY(-4px);
-}
-
-.transition-all {
-    transition: all .5s cubic-bezier(.19,1,.22,1);
 }
 
 /* Responsive */
@@ -672,6 +599,7 @@ html[data-theme="light"] .divider-vert {
 .justify-center { justify-content: center; }
 .items-start { align-items: flex-start; }
 .items-center { align-items: center; }
+.align-stretch { align-items: stretch; }
 .self-start { align-self: flex-start; }
 .self-center { align-self: center; }
 .flex-1 { flex: 1; }
@@ -690,10 +618,6 @@ html[data-theme="light"] .divider-vert {
 .pt-md { padding-top: 1rem; }
 .pt-lg { padding-top: 1.2rem; }
 .pt-xl { padding-top: 1.4rem; }
-
-.w-85 { width: 85%; }
-.pos-relative { position: relative; }
-.z-2 { z-index: 2; }
 
 .hero-h1 {
     font-size: clamp(2.8rem, 5.5vw, 4rem);
@@ -744,8 +668,6 @@ html[data-theme="light"] .divider-vert {
 
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
-.form-confirmation { text-align: center; }
-
 .form-hidden {
     display: none !important;
 }
@@ -781,4 +703,62 @@ html[data-theme="light"] .divider-vert {
 .pagination-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+/* Mobile nav toggle */
+.mobile-nav-toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    padding: .5rem;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+.mobile-nav-toggle .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.mobile-nav-toggle::before,
+.mobile-nav-toggle::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    margin: 6px 0;
+    transition: transform .3s ease-out;
+}
+
+.mobile-nav-toggle[aria-expanded="true"]::before { transform: translateY(4px) rotate(45deg); }
+.mobile-nav-toggle[aria-expanded="true"]::after { transform: translateY(-4px) rotate(-45deg); }
+
+@media (max-width: 880px) {
+    .primary-nav {
+        position: fixed;
+        inset: 0 0 0 30%;
+        flex-direction: column;
+        padding: min(20vh, 10rem) 2rem;
+        gap: 1.5rem;
+        background: color-mix(in srgb, var(--bg-secondary-color) 95%, transparent);
+        backdrop-filter: blur(1rem);
+        transform: translateX(100%);
+        transition: transform .35s ease-out;
+    }
+
+    .primary-nav[data-visible="true"] {
+        transform: translateX(0%);
+    }
+
+    .mobile-nav-toggle {
+        display: block;
+    }
 }
