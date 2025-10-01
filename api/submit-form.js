@@ -1,7 +1,6 @@
 // This is a Vercel Serverless Function.
 // It will live at the URL /api/submit-form
-import nodemailer from 'nodemailer';
-import { promises as dns } from 'dns';
+import { Resend } from 'resend';
 
 /**
  * A simple utility to escape HTML characters.
@@ -30,9 +29,9 @@ export default async function handler(request, response) {
   // Get the form data from the request body.
   const { name, email, subject, message, website } = request.body;
 
-  // --- Check for required environment variables ---
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.error('Missing email credentials in environment variables.');
+  // --- Check for the required Resend API key ---
+  if (!process.env.RESEND_API_KEY) {
+    console.error('Missing Resend API key in environment variables.');
     return response.status(500).json({ message: 'Server configuration error.' });
   }
 
@@ -52,50 +51,25 @@ export default async function handler(request, response) {
     return response.status(400).json({ message: 'Invalid email format.' });
   }
 
-  // --- MX Record DNS Check for Email Domain ---
-  try {
-    const domain = email.split('@')[1];
-    const records = await dns.resolveMx(domain);
-    if (!records || records.length === 0) {
-      // No MX records means the domain can't receive email.
-      throw new Error('Invalid email domain.');
-    }
-  } catch (error) {
-    console.error('Email domain validation error:', error.message);
-    // This catches domains that don't exist or have no MX records.
-    return response.status(400).json({ message: 'The provided email address is not valid.' });
-  }
-
-  // Sanitize name for the 'from' field to prevent header issues.
-  const sanitizedName = name.replace(/[^a-zA-Z0-9 ]/g, '').trim();
-
-  // Create a transporter object using SMTP transport.
-  // You must use environment variables for security.
-  const transporter = nodemailer.createTransport({
-    service: 'gmail', // Or your preferred email provider
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS, // For Gmail, this should be an "App Password"
-    },
-  });
-
-  // Define the email options
-  const mailOptions = {
-    from: `"${sanitizedName}" <${process.env.EMAIL_USER}>`, // Use sanitized name
-    to: 'support@aroonierepairs.test', // Your receiving email address
-    replyTo: email, // Reply-to the user's email
-    subject: `New Contact Form Submission: ${subject}`,
-    text: `You have a new submission from:\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-    html: `<p>You have a new submission from:</p><ul><li><strong>Name:</strong> ${escapeHTML(name)}</li><li><strong>Email:</strong> <a href="mailto:${escapeHTML(email)}">${escapeHTML(email)}</a></li></ul><p><strong>Message:</strong></p><p>${escapeHTML(message)}</p>`,
-  };
+  // Initialize Resend with your API key from environment variables
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
-    // Send the email
-    await transporter.sendMail(mailOptions);
+    // Send the email using the Resend API
+    await resend.emails.send({
+      // IMPORTANT: The 'from' address must be a verified domain in Resend.
+      // For testing, Resend provides 'onboarding@resend.dev'.
+      from: 'Aroonie Repairs <onboarding@resend.dev>',
+      to: ['support@aroonierepairs.test'], // Your receiving email address
+      subject: `New Contact Form Submission: ${subject}`,
+      reply_to: email,
+      html: `<p>You have a new submission from:</p><ul><li><strong>Name:</strong> ${escapeHTML(name)}</li><li><strong>Email:</strong> ${escapeHTML(email)}</li></ul><p><strong>Message:</strong></p><p>${escapeHTML(message)}</p>`,
+    });
+
     // Send a success response back to the frontend.
     response.status(200).json({ message: 'Thank you! Your message has been received.' });
   } catch (error) {
-    console.error('Nodemailer error:', error.message);
+    console.error('Resend API error:', error);
     // Send an error response
     response.status(500).json({ message: 'Sorry, there was an error sending your message.' });
   }
