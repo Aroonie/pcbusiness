@@ -700,6 +700,21 @@ html[data-theme="light"] .divider-vert {
     cursor: not-allowed;
 }
 
+.form-field-narrow {
+    max-width: 600px; /* Adjust this value as needed */
+    margin: 0 auto;
+}
+
+.honeypot {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+    z-index: -1;
+}
+
 /* Mobile nav toggle */
 .mobile-nav-toggle {
     display: none;

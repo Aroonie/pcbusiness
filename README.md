@@ -50,20 +50,27 @@ A simple website template
 
 ## :rocket: Technologies ##
 
-This project is built with standard web technologies:
+This project is built with modern web technologies:
 
 - HTML
 - CSS
 - Vanilla JavaScript
+- [Node.js](https://nodejs.org/en/) for the serverless API endpoint.
 
 ## :white_check_mark: Requirements ##
 
-No special requirements. You can open the `index.html` file directly in your browser.
+Before starting :checkered_flag:, you need to have Git and Node.js installed.
 
 ## :checkered_flag: Starting ##
 ```bash
 # Clone this project
 $ git clone https://github.com/Aroonie/pcbusiness
+
+# Access the project folder
+$ cd pcbusiness
+
+# To run locally with Vercel CLI
+$ vercel dev
 ```
 
 ## :memo: License ##

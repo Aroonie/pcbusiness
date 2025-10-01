@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Contact Form (contact.html)
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
-        const confirmationPanel = document.getElementById('form-confirmation');
+        const formStatus = document.getElementById('form-status');
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault(); // Always prevent default submission
@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = formData.get('email').trim();
             const subject = formData.get('subject').trim();
             const message = formData.get('message').trim();
+            const honeypot = formData.get('website');
 
             let firstInvalidField = null;
 
@@ -96,32 +97,49 @@ document.addEventListener('DOMContentLoaded', function() {
                 showError(document.getElementById('subject'), 'Please enter a subject.');
                 if (!firstInvalidField) firstInvalidField = document.getElementById('subject');
             }
+            if (!message) {
+                showError(document.getElementById('message'), 'Please enter a message.');
+                if (!firstInvalidField) firstInvalidField = document.getElementById('message');
+            }
 
             if (firstInvalidField) {
                 firstInvalidField.focus();
             } else {
-                // If form is valid, show confirmation panel
-                const mailtoLink = `mailto:support@aroonierepairs.test?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-                    `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-                )}`;
-                
-                const sendEmailLink = document.getElementById('send-email-link');
-                sendEmailLink.href = mailtoLink;
-
-                contactForm.classList.add('form-hidden');
-                confirmationPanel.classList.remove('d-none');
-
-                // Optional: Add a button to go back to the form
-                const backButton = document.getElementById('form-back-btn');
-                if (backButton) {
-                    backButton.addEventListener('click', () => {
-                        contactForm.classList.remove('form-hidden');
-                        confirmationPanel.classList.add('d-none');
-                        contactForm.reset(); // Reset form fields
-                    }, { once: true }); // Use 'once' to avoid multiple listeners
-                }
+                // If form is valid, send data to the serverless function
+                submitForm({ name, email, subject, message, website: honeypot });
             }
         });
+
+        async function submitForm(data) {
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            formStatus.textContent = '';
+
+            try {
+                const response = await fetch('/api/submit-form', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    formStatus.innerHTML = `<p style="color: var(--success);">${result.message}</p>`;
+                    contactForm.reset();
+                } else {
+                    throw new Error(result.message || 'Something went wrong.');
+                }
+            } catch (error) {
+                formStatus.innerHTML = `<p style="color: var(--danger);">${error.message}</p>`;
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message →';
+            }
+        }
 
         function showError(field, message) {
             field.setAttribute('aria-invalid', 'true');

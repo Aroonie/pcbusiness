@@ -123,32 +123,34 @@
                     <div class="partner-grid">
                         <div class="feature-card d-flex flex-col" data-animate>
                             <h3 class="d-none">Contact Form</h3>
-                            <form id="contact-form" class="d-flex flex-col gap-md" novalidate>
-                                <div>
+                            <form id="contact-form" class="d-flex flex-col gap-md items-center" novalidate>
+                                <div class="form-field-narrow">
                                     <label for="name">Your Name</label>
                                     <input type="text" id="name" name="name" placeholder="Your Name" required>
                                 </div>
-                                <div>
+                                <div class="form-field-narrow">
                                     <label for="email">Your Email</label>
                                     <input type="email" id="email" name="email" placeholder="Your Email" required>
                                 </div>
-                                <div>
+                                <div class="form-field-narrow">
                                     <label for="subject">Subject</label>
                                     <input type="text" id="subject" name="subject" placeholder="Subject" required>
                                 </div>
-                                <div>
+                                <div class="form-field-narrow">
                                     <label for="message">Briefly describe the issue with your computer</label>
-                                    <textarea id="message" name="message" rows="5" placeholder="Briefly describe the issue with your computer..."></textarea>
+                                    <textarea id="message" name="message" rows="5" placeholder="Briefly describe the issue with your computer..." required></textarea>
+                                </div>
+                                <!-- Honeypot field for spam prevention -->
+                                <div class="form-field-narrow honeypot">
+                                    <label for="website">Website</label>
+                                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn-primary cta-btn">Send Message →</button>
                                 </div>
                             </form>
-                            <div id="form-confirmation" class="d-none d-flex flex-col gap-md text-center items-center">
-                                <h3>Thank You!</h3>
-                                <p>Your message has been prepared. Click the button below to open your email client and send it.</p>
-                                <a id="send-email-link" class="btn-primary cta-btn">Open Email Client</a>
-                            </div>
+                            <!-- This div will be used to show success or error messages -->
+                            <div id="form-status" class="form-field-narrow text-center"></div>
                         </div>
                         <address class="d-flex flex-col gap-lg" data-animate>
                             <div class="feature-card v-stack-sm contact-details-card">
