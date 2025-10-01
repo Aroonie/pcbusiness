@@ -10,6 +10,6 @@
   "author": "Arunan",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "nodemailer": "^6.9.8"
+    "nodemailer": "^6.9.13"
   }
 }
