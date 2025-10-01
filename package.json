@@ -1,0 +1,15 @@
+{
+  "name": "aroonie-repairs-website",
+  "version": "1.0.0",
+  "description": "A simple website template for a PC repair business.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Arunan",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "nodemailer": "^6.9.8"
+  }
+}

@@ -25,7 +25,7 @@
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
   <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/Aroonie" target="_blank">Author</a>
+  <a href="https://github.com/Aroonie" target="_blank" rel="noopener noreferrer">Author</a>
 </p>
 
 <br>
@@ -55,6 +55,9 @@ $ git clone https://github.com/Aroonie/pcbusiness
 # Access the project folder
 $ cd pcbusiness
 
+# Install dependencies
+$ npm install
+
 # To run locally with Vercel CLI
 $ vercel dev
 ```
@@ -64,7 +67,7 @@ $ vercel dev
 This project is under the GNU GPLv3 License. For more details, see the LICENSE.md file.
 
 
-Made with :heart: by <a href="https://github.com/Aroonie" target="_blank"> Arunan</a>
+Made with :heart: by <a href="https://github.com/Aroonie" target="_blank" rel="noopener noreferrer"> Arunan</a>
 
 &#xa0;
 
