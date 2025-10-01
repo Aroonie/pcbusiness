@@ -50,34 +50,20 @@ A simple website template
 
 ## :rocket: Technologies ##
 
-The following tools were used in this project:
+This project is built with standard web technologies:
 
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
+- HTML
+- CSS
+- Vanilla JavaScript
 
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+No special requirements. You can open the `index.html` file directly in your browser.
 
 ## :checkered_flag: Starting ##
-
 ```bash
 # Clone this project
 $ git clone https://github.com/Aroonie/pcbusiness
-
-# Access
-$ cd pcbusiness
-
-# Install dependencies
-$ yarn
-
-# Run the project
-$ yarn start
-
-# The server will initialize in the <http://localhost:3000>
 ```
 
 ## :memo: License ##

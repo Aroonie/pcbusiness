@@ -132,61 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Team Pagination (team.html)
-    const teamGrid = document.getElementById('team-grid');
-    if (teamGrid) {
-        const paginationControls = document.getElementById('pagination-controls');
-        const teamMembers = Array.from(document.getElementsByClassName('team-member'));
-        
-        const itemsPerPage = 3;
-        let currentPage = 1;
-        const totalPages = teamMembers.length > 0 ? Math.ceil(teamMembers.length / itemsPerPage) : 0;
-
-        function showPage(page) {
-            currentPage = page;
-            const startIndex = (page - 1) * itemsPerPage;
-            const endIndex = startIndex + itemsPerPage;
-
-            teamMembers.forEach((member, index) => {
-                member.style.display = (index >= startIndex && index < endIndex) ? 'flex' : 'none';
-            });
-            updatePaginationControls();
-        }
-
-        function updatePaginationControls() {
-            if (totalPages <= 1) return; // Don't show controls for 1 or 0 pages
-
-            paginationControls.innerHTML = '';
-
-            const prevButton = document.createElement('button');
-            prevButton.textContent = '« Prev';
-            prevButton.className = 'pagination-btn';
-            prevButton.disabled = currentPage === 1;
-            prevButton.addEventListener('click', () => showPage(currentPage - 1));
-            paginationControls.appendChild(prevButton);
-
-            for (let i = 1; i <= totalPages; i++) {
-                const pageButton = document.createElement('button');
-                pageButton.textContent = i;
-                pageButton.className = 'pagination-btn';
-                if (i === currentPage) pageButton.classList.add('active');
-                pageButton.addEventListener('click', () => showPage(i));
-                paginationControls.appendChild(pageButton);
-            }
-
-            const nextButton = document.createElement('button');
-            nextButton.textContent = 'Next »';
-            nextButton.className = 'pagination-btn';
-            nextButton.disabled = currentPage === totalPages;
-            nextButton.addEventListener('click', () => showPage(currentPage + 1));
-            paginationControls.appendChild(nextButton);
-        }
-
-        if (totalPages > 0) {
-            showPage(1);
-        }
-    }
-
     // Smooth scroll for 'Scroll' button (index.html)
     const scrollBtn = document.getElementById('scroll-btn');
     if (scrollBtn) {

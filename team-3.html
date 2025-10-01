@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Careers | Aroonie Repairs</title>
-        <meta name="description" content="Join the team at Aroonie Repairs. We're looking for talented individuals to help us grow.">
+        <title>Our Team | Aroonie Repairs</title>
+        <meta name="description" content="Meet the team at Aroonie Repairs - a collective of strategists, designers, and developers.">
         <meta name="csrf-token" content="5tFip7yWBI1zWNhS33s0uABD7BBuRYnGvuQMCSq2">
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700&display=swap" rel="stylesheet"/>
@@ -77,13 +77,13 @@
                         <a role="menuitem" href="about.html" class="">About</a>
                     </li>
                     <li role="none">
-                        <a role="menuitem" href="team.html" class="">Team</a>
+                        <a role="menuitem" href="team.html" class="active">Team</a>
                     </li>
                     <li role="none">
                         <a role="menuitem" href="services.html" class="">Services</a>
                     </li>
                     <li role="none">
-                        <a role="menuitem" href="careers.html" class="active">Careers</a>
+                        <a role="menuitem" href="careers.html" class="">Careers</a>
                     </li>
                     <li role="none">
                         <a role="menuitem" href="contact.html" class="">Contact</a>
@@ -109,23 +109,49 @@
         </header>
         <main id="main-content">
             <section class="section-hero">
-                <div class="container d-flex flex-col gap-lg text-center items-center">
+                <div class="container d-flex flex-col gap-2xl text-center items-center">
                     <div class="section-title-wrap" data-animate>
-                        <span class="section-kicker">Join Our Team</span>
-                        <h1 class="hero-h1">Build Your Future with <span class="headline-gradient">Aroonie Repairs</span>.</h1>
-                        <p class="hero-p mx-auto">We're looking for passionate, talented individuals to help us provide the best PC repair services. If you love technology and helping people, you might be a great fit.</p>
+                        <span class="section-kicker">Our Experts</span>
+                        <h1 class="hero-h1">The Technicians You <span class="headline-gradient">Can Trust</span>.</h1>
+                        <p class="hero-p mx-auto">We are a team of certified, passionate, and experienced technicians dedicated to solving your computer problems quickly and effectively.</p>
                     </div>
                 </div>
             </section>
 
-            <section class="section-tight section-muted">
-                <div class="container d-flex flex-col gap-2xl">
-                    <div class="section-title-wrap" data-animate>
-                        <h2 class="section-title-h2">Current Openings</h2>
-                        <p class="section-title-p">There are currently no open positions. Please check back later or send us a speculative application.</p>
+            <section class="section-tight">
+                <div class="container">
+                    <div id="team-grid" class="grid grid-3" data-animate>
+                        <div class="feature-card text-center items-center team-member">
+                            <img src="https://i.pravatar.cc/120?img=7" alt="Jessica Chen" class="team-member-img">
+                            <h3 class="team-member-name">Jessica Chen</h3>
+                            <p class="team-member-role">Apple & Mac Specialist</p>
+                            <p>Our resident Apple guru, Jessica knows MacBooks and iMacs inside and out, providing expert service for all Apple devices.</p>
+                        </div>
+                        <div class="feature-card text-center items-center team-member">
+                            <img src="https://i.pravatar.cc/120?img=8" alt="Chris Taylor" class="team-member-img">
+                            <h3 class="team-member-name">Chris Taylor</h3>
+                            <p class="team-member-role">Gaming PC Specialist</p>
+                            <p>Chris lives and breathes high-performance gaming rigs, helping clients build and optimize their ultimate gaming machines.</p>
+                        </div>
                     </div>
-                    <div class="d-flex justify-center" data-animate>
-                         <a href="contact.html" class="btn-primary">Send Speculative Application</a>
+                    <div id="pagination-controls" class="pagination-container">
+                        <a href="team-2.html" class="pagination-btn">« Prev</a>
+                        <a href="team.html" class="pagination-btn">1</a>
+                        <a href="team-2.html" class="pagination-btn">2</a>
+                        <a href="team-3.html" class="pagination-btn active">3</a>
+                        <a href="#" class="pagination-btn" style="pointer-events: none; opacity: 0.5;">Next »</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-cta">
+                <div class="container text-center d-flex flex-col gap-xl" data-animate>
+                    <span class="section-kicker self-center">Join Us</span>
+                    <h2 class="cta-h2">Interested in joining our team?</h2>
+                    <p class="cta-p">We are always looking for talented individuals who are passionate about their craft. Check out our open positions or get in touch.</p>
+                    <div class="d-flex gap-1 flex-wrap justify-center">
+                        <a href="careers.html" class="btn-primary cta-btn">View Careers</a>
+                        <a href="contact.html" class="btn-outline cta-btn">Contact Us</a>
                     </div>
                 </div>
             </section>
