@@ -17,11 +17,11 @@
 
   <img alt="License" src="https://img.shields.io/github/license/Aroonie/pc-business?color=56BEB8">
 
-  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/Aroonie/pc-business?color=56BEB8" /> -->
+  <!-- <img alt="Github issues" src="https://img.shields.io/github/issues/Aroonie/pcbusiness?color=56BEB8" /> -->
 
-  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/Aroonie/pc-business?color=56BEB8" /> -->
+  <!-- <img alt="Github forks" src="https://img.shields.io/github/forks/Aroonie/pcbusiness?color=56BEB8" /> -->
 
-  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/Aroonie/pc-business?color=56BEB8" /> -->
+  <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/Aroonie/pcbusiness?color=56BEB8" /> -->
 </p>
 
 <!-- Status -->
@@ -39,7 +39,7 @@
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
   <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/{{Aroonie}}" target="_blank">Author</a>
+  <a href="https://github.com/Aroonie" target="_blank">Author</a>
 </p>
 
 <br>
@@ -47,12 +47,6 @@
 ## :dart: About ##
 
 A simple website template
-
-## :sparkles: Features ##
-
-:heavy_check_mark: Feature 1;\
-:heavy_check_mark: Feature 2;\
-:heavy_check_mark: Feature 3;
 
 ## :rocket: Technologies ##
 
@@ -72,10 +66,10 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 
 ```bash
 # Clone this project
-$ git clone https://github.com/Aroonie/pc-business
+$ git clone https://github.com/Aroonie/pcbusiness
 
 # Access
-$ cd pc-business
+$ cd pcbusiness
 
 # Install dependencies
 $ yarn
