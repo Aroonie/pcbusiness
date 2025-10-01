@@ -60,7 +60,7 @@ export default async function handler(request, response) {
       // IMPORTANT: The 'from' address must be a verified domain in Resend.
       // For testing, Resend provides 'onboarding@resend.dev'.
       from: 'Aroonie Repairs <onboarding@resend.dev>',
-      to: ['support@aroonierepairs.test'], // Your receiving email address
+      to: ['your-actual-email@example.com'], // <-- CHANGE THIS to your real email address
       subject: `New Contact Form Submission: ${subject}`,
       reply_to: email,
       html: `<p>You have a new submission from:</p><ul><li><strong>Name:</strong> ${escapeHTML(name)}</li><li><strong>Email:</strong> ${escapeHTML(email)}</li></ul><p><strong>Message:</strong></p><p>${escapeHTML(message)}</p>`,
